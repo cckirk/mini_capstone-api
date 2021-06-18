@@ -1,3 +1,0 @@
-class MiniCapstoneController < ApplicationController
-  
-end
