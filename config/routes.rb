@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   # get "/singular_product", controller:"products", action: "one_product"
   # get "/second_product", controller:"products", action: "the_second_product"
   # get "/every_product", controller:"products", action: "all_of_them"
+  matc
   get "/products", controller: "products", action:"index"
   get "/products/:id", controller: "products", action: "show"
   post "/products/:id", controller: "products", action: "create"
+  patch "/products/:id", controller: "products", action: "update"
+  delete "/products/:id", controller: "products", action: "destroy"
+  #[DELETE] \"/products/3\">"
+
 end
