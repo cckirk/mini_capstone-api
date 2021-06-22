@@ -10,16 +10,16 @@ class ProductsController < ApplicationController
   def show
     the_id = params[:id]
     product = Product.find_by(id: the_id)
-    render json: recipe.as_json
+    render json: product.as_json(methods: [:is_discounted, :tax, :total]) 
 
   end
 
   def create
     product = Product.new(
-      name: params[:input_name], 
-      price: params[:input_price], 
-      description: params[:input_description], 
-      img_url: params[:input_img_url]
+      name: params[:input_name] || product.name, 
+      price: params[:input_price] || product.price, 
+      description: params[:input_description] || product.descroption, 
+      img_url: params[:input_img_url] || product.img_url
     )
     product.save
     render json: product.as_json
