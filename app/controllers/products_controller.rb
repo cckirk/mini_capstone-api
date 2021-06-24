@@ -1,10 +1,8 @@
 class ProductsController < ApplicationController
  
   def index
-    #get all the products from the db
     product = Product.all
     render json: product.as_json
-
   end
 
   def show
@@ -20,8 +18,11 @@ class ProductsController < ApplicationController
       description: params[:input_description] || product.descroption, 
       img_url: params[:input_img_url] || product.img_url
     )
-    product.save
-    render json: product.as_json
+    if product.save
+      render json: product
+    else
+      render json: {errors: product.errors.full_messages}, status: :unprocessable_entity
+    end
   end
 
   def update
