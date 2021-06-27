@@ -11,6 +11,11 @@ class Product < ApplicationRecord
       return false
     end
   end
+  belongs_to :supplier
+  has_many :images
+ # def supplier
+  #  Supplier.find_by(id: supplier_id)
+  #end
 
   def tax
     tax_total = (price * 0.09)

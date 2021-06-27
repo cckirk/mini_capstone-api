@@ -1,2 +1,3 @@
 class Suplier < ApplicationRecord
+
 end
