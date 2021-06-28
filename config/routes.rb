@@ -9,5 +9,8 @@ Rails.application.routes.draw do
   patch "/products/:id", controller: "products", action: "update"
   delete "/products/:id", controller: "products", action: "destroy"
   #[DELETE] \"/products/3\">"
+  #post "/users", controller: "users", action: "create"
+  post "/users" => "users#create"
+  post "/sessions" => "sessions#create"
 
 end
