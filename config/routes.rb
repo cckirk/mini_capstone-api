@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # get "/every_product", controller:"products", action: "all_of_them"
   get "/products", controller: "products", action:"index"
   get "/products/:id", controller: "products", action: "show"
-  post "/products/:id", controller: "products", action: "create"
+  post "/products/", controller: "products", action: "create"
   patch "/products/:id", controller: "products", action: "update"
   delete "/products/:id", controller: "products", action: "destroy"
   #[DELETE] \"/products/3\">"
@@ -16,3 +16,7 @@ Rails.application.routes.draw do
   get "/orders/:id" => "orders#show"
   get "/orders" => "orders#index"
 end
+
+# guests (not logged in)
+# users (logged in)
+# admins (can do 'anything')
