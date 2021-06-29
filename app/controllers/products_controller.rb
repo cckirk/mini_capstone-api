@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
  
   def index
-    products = Product.all
-    render json: products
+    product = Product.all
+    render json: product.as_json
   end
 
   def show
@@ -23,6 +23,7 @@ class ProductsController < ApplicationController
     else
       render json: {errors: product.errors.full_messages}, status: :unprocessable_entity
     end
+
   end
 
   def update
@@ -40,6 +41,7 @@ class ProductsController < ApplicationController
     the_id = params[:id]
     product = Product.find_by(id: the_id)
     product.destroy
-    render json: product.as_json
+    render json: product.as_json && {message: "You just deleted this product"}
+    product: product
   end
 end

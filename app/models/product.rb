@@ -4,6 +4,9 @@ class Product < ApplicationRecord
   #validates :inventory, numericality:  { only_integer: true }
   validates :description, length: {minimum: 10}
   validates :description, length: {maximum: 500}
+  
+  has_many :orders
+  
   def is_discounted
     if price.to_i < 10
       return true
