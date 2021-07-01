@@ -6,6 +6,8 @@ class Product < ApplicationRecord
   validates :description, length: {maximum: 500}
   
   has_many :orders
+  has_many :images
+  has_many :category_products
   
   def is_discounted
     if price.to_i < 10

@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_admin, only: [:create, :update, :destroy]
+  
   def index
     product = Product.all
     render json: product.as_json
@@ -13,13 +14,14 @@ class ProductsController < ApplicationController
 
   def create
     product = Product.new(
-      name: params[:input_name] || product.name, 
-      price: params[:input_price] || product.price, 
-      description: params[:input_description] || product.descroption, 
-      img_url: params[:input_img_url] || product.img_url
+    name: params[:input_name] || product.name, 
+    price: params[:input_price] || product.price, 
+    description: params[:input_description] || product.descroption, 
+    img_url: params[:input_img_url] || product.img_url
     )
+    product.save
     if product.save
-      render json: product
+      render json: product.as_json
     else
       render json: {errors: product.errors.full_messages}, status: :unprocessable_entity
     end
