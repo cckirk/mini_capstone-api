@@ -1,15 +1,20 @@
 class ProductsController < ApplicationController
   before_action :authenticate_admin, only: [:create, :update, :destroy]
-  
+
   def index
-    product = Product.all
-    render json: product.as_json
+    if params[:category]
+      category = Category.find_by(name: params[:category])
+      products = category.products
+    else
+      products = Product.all
+    end
+    render json: products
   end
 
   def show
     the_id = params[:id]
     product = Product.find_by(id: the_id)
-    render json: product.as_json
+    render json: product
   end
 
   def create
@@ -44,6 +49,5 @@ class ProductsController < ApplicationController
     product = Product.find_by(id: the_id)
     product.destroy
     render json: product.as_json && {message: "You just deleted this product"}
-    product: product
   end
 end

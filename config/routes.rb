@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'carted_product_git/add'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # get "/singular_product", controller:"products", action: "one_product"
   # get "/second_product", controller:"products", action: "the_second_product"
